@@ -1,3 +1,3 @@
-const ClassA = require("./myModules").ClassA;
+const myModule = require("./myModule.js");
 
-const classA = new ClassA();
+const classA = new myModule.ClassA();
