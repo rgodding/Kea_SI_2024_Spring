@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Python testing</h1>
+    <input name="input" type="text" id="input">
+    <button onclick="postServerData()">Send data</button>
+    <button onclick="getServerData()">Get data</button>
+    <script>
+        const pythonUrl = "http://127.0.0.1:8000";
+        const inputField = document.getElementById("input");
+
+        function getServerData() {
+            fetch(`${pythonUrl}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                });
+        }
+
+        function postServerData() {
+            const input = inputField.value;
+            fetch(`${pythonUrl}/postRoute/${input}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    input: document.getElementById("input").value
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                }).catch(error => {
+                    console.log(error);
+                });
+        }
+    </script>
+</body>
+</html>
