@@ -74,7 +74,7 @@ CREATE TABLE sales (
     date DATETIME
 );
 
--- Create Startup priviledges
+-- Create Startup privileges
 GRANT ALL ON sale_db.* TO 'developer';
 GRANT ALL ON app_db.* TO 'developer';
 
