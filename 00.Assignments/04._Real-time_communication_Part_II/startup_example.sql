@@ -112,5 +112,3 @@ SET DEFAULT ROLE ALL TO
 -- Sale users
 'read_sales_user'@'localhost', 
 'rw_sales_user'@'localhost';
-
-
