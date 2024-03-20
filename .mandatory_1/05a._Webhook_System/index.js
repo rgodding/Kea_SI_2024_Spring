@@ -63,7 +63,6 @@ function generatePaymentToken() {
 }
 
 function confirmPayment(token, amount) {
-    return "success"
     if (token === "success_token") {
         return "success";
     } else {
