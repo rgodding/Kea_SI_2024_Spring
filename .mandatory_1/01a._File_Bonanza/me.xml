@@ -1,0 +1,9 @@
+<me>
+    <name>John Smith</name>
+    <age>25</age>
+    <hobbies>
+        <hobby>Coding</hobby>
+        <hobby>Sleeping</hobby>
+        <hobby>Eating</hobby>
+    </hobbies>
+</me>
