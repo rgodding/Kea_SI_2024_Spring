@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python-multipart-form"
+version = "0.1.0"
+description = ""
+authors = ["rgodding <rashaun.godding@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+uvicorn = "^0.29.0"
+fastapi = "^0.110.1"
+python-multipart = "^0.0.9"
+jinja2 = "^3.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
