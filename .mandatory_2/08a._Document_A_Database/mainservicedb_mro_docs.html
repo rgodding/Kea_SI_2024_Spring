@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <style>
+            h1 {
+                text-align: center;
+            }
+            
+            table, th, td {
+                border: 1px solid black;
+            }
+    
+            main {
+                min-height: calc(100vh - 40px);
+                margin: 0 4em 0 4em;
+            }
+    
+            table {
+                width: 100%;
+            }
+    
+            footer {
+                color: grey;
+                font-size: 0.8em;
+            }
+        </style>
+        <title>mainservicedb - Docs</title>
+    </head>
+    <body>
+        <main>
+            <h1>mainservicedb</h1>
+    
+            <div class="database-table">
+        <h2 class="database-table-name">Categories</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Name</td><td>varchar(100)</td><td>NO</td><td>UNI</td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Description</td><td>varchar(999)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">CategoryProduct</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>CategoriesId</td><td>int</td><td>NO</td><td>PRI</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>ProductsId</td><td>int</td><td>NO</td><td>PRI</td><td>Number</td><td></td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">Images</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Name</td><td>longtext</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>FileName</td><td>longtext</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Alt</td><td>longtext</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>ProductId</td><td>int</td><td>NO</td><td>MUL</td><td></td><td>Number</td><td>Products.Id</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">OrderItems</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Quantity</td><td>int</td><td>NO</td><td></td><td></td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>ProductId</td><td>int</td><td>NO</td><td>MUL</td><td></td><td>Number</td><td>Products.Id</td>
+                </tr>
+                
+                <tr>
+                    <td>OrderId</td><td>int</td><td>NO</td><td>MUL</td><td></td><td>Number</td><td>Orders.Id</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">Orders</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>OrderNumber</td><td>char(36)</td><td>NO</td><td>UNI</td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Status</td><td>int</td><td>NO</td><td></td><td></td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>TransactionId</td><td>longtext</td><td>YES</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>UserId</td><td>int</td><td>YES</td><td>MUL</td><td></td><td>Number</td><td>UserDetails.Id</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">ProductDescription</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Name</td><td>varchar(100)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Description</td><td>varchar(999)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Price</td><td>decimal(14,2)</td><td>YES</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>UpdatedAt</td><td>datetime(6)</td><td>NO</td><td></td><td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)</td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>ProductId</td><td>int</td><td>NO</td><td>MUL</td><td></td><td>Number</td><td>Products.Id</td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">ProductRemoved</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>ProductId</td><td>int</td><td>NO</td><td>UNI</td><td></td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>RemovedAt</td><td>datetime(6)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">Products</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Guid</td><td>char(36)</td><td>NO</td><td>UNI</td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>CreatedAt</td><td>datetime(6)</td><td>NO</td><td></td><td>DEFAULT_GENERATED</td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Stock</td><td>int</td><td>YES</td><td></td><td></td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Sold</td><td>int</td><td>YES</td><td></td><td></td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>ProductRemovedId</td><td>int</td><td>YES</td><td></td><td></td><td>Number</td><td></td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    
+        <h2 class="database-table-name">UserDetails</h2>
+        <table class="database-table-body">
+            <tr>
+                <th>field</th><th>type</th><th>null</th><th>key</th><th>extra</th><th>typeJS</th><th>keyTo</th>                 
+            </tr>
+    
+        </tr>
+        </thead>
+        <tbody>
+    
+            
+                <tr>
+                    <td>Id</td><td>int</td><td>NO</td><td>PRI</td><td>auto_increment</td><td>Number</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Guid</td><td>char(36)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>FirstName</td><td>varchar(100)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>LastName</td><td>varchar(100)</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Email</td><td>varchar(255)</td><td>NO</td><td>UNI</td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>PhoneNumber</td><td>longtext</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>Address</td><td>longtext</td><td>NO</td><td></td><td></td><td>String</td><td></td>
+                </tr>
+                
+    
+        </tbody>
+        </table>
+    </div>
+            </main> 
+            <br><br>
+            <footer>Powered by MRO</footer>
+        </body>
+        </html>
