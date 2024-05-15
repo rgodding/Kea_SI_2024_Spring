@@ -1,5 +1,5 @@
 {
-  "name": "10a._graphql",
+  "name": "10b._integrate_with_payment",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -14,7 +14,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
-    "express-graphql": "^0.12.0",
-    "graphql": "^15.8.0"
+    "nodemon": "^3.1.0",
+    "stripe": "^15.6.0"
   }
 }
