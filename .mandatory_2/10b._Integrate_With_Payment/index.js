@@ -7,13 +7,18 @@ const stripe = new Stripe('sk_test_51O76ICDHvFZqPnkqtIDylAezcfJMUXzqA3VBNJm4MrxC
 
 app.use(bodyParser.json());
 
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.sendFile('index.html', { root: __dirname });
+});
+
 app.post('/create-payment-intent', async (req, res) => {
-    console.log('Creating payment intent');
     const paymentMethodId = req.body.payment_method_id;
+    const price = req.body.price;
     
     try {
-        const paymentIntent = await orderFunction(paymentMethodId);
-        console.log('Intent:', paymentIntent);
+        const paymentIntent = await orderFunction(paymentMethodId, price);
         res.json(paymentIntent);
     } catch (error) {
         console.error('Error creating payment intent:', error);
@@ -27,15 +32,15 @@ app.listen(PORT, () => {
 });
 
 // Functions
-async function orderFunction(paymentMethodId) {
+async function orderFunction(paymentMethodId, price) {
     try {
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: 1000, // Amount in cents, e.g., $10.00
-            currency: 'usd',
+            amount: price, // Amount in cents, e.g., $10.00
+            currency: "usd",
             payment_method: paymentMethodId,
             automatic_payment_methods: {
                 enabled: true,
-                allow_redirects: 'never', // Ensure no redirects are used
+                allow_redirects: "never", // Ensure no redirects are used
             },
         });
         return paymentIntent;

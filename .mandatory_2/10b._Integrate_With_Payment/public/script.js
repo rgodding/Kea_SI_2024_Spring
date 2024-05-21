@@ -43,6 +43,7 @@ form.addEventListener('submit', async function(event) {
             },
             body: JSON.stringify({
                 payment_method_id: paymentMethod.id,
+                price: 99999
             }),
         })
         .then(response => response.json())
