@@ -21,6 +21,7 @@
 
 <body>
     <main>
+        
         <h1>WebSocket IO</h1>
         <p>
             Id: <span id="id"></span>
@@ -41,11 +42,14 @@
             <ul id="messageList"></ul>
         </div>
         <script>
+            // Initialize the socket
             const socket = io("http://localhost:8080");
 
+            // Send a message to the server
             function sendMessage() {
                 const message = document.getElementById("message").value;
                 const receiver = document.getElementById("receiver").value;
+                // Message and receiver are sent to the server
                 const data = {
                     message,
                     receiver
@@ -57,11 +61,13 @@
                 document.getElementById("id").innerText = id;
             });
 
+            // Receive a message from the server and display it in the message list
             socket.on("messageReceived", (data) => {
                 const messageList = document.getElementById("messageList");
                 messageList.innerHTML += `<li>${data.message} - From: ${data.sender}</li>`;
             });
 
+            // Upon connecting to the server, log a message
             socket.on("connect", () => {
                 console.log("Connected to the server");
             });

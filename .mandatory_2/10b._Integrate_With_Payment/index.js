@@ -1,11 +1,10 @@
 import express from 'express';
 import Stripe from 'stripe';
-import bodyParser from 'body-parser';
 
 const app = express();
 const stripe = new Stripe('sk_test_51O76ICDHvFZqPnkqtIDylAezcfJMUXzqA3VBNJm4MrxCcsexzHQ7kFDgX8403tn4v6o0WF3mDxSZCGKxLlBlcsDi002i0C2wZ3');
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(express.static('public'));
 
@@ -27,6 +26,7 @@ app.post('/create-payment-intent', async (req, res) => {
 });
 
 const PORT = 8080;
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

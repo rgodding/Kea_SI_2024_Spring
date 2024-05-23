@@ -1,7 +1,6 @@
 ## Next Auth Login Setup
 
 ### Setup Route.ts
-
 Inside `/app/`, create: `/app/api/auth/[...nextauth]/route.ts`
 
 ```typescript

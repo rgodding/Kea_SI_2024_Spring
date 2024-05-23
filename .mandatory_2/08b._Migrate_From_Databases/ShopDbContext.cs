@@ -143,7 +143,7 @@ public class ShopDbContext : DbContext
     {
         // SQL Server context
         await using var sqlContext = new ShopDbContext(new DbContextOptionsBuilder<ShopDbContext>()
-            .UseSqlServer("sql-connection-string")
+            .UseMySql("mysql-connection-string")
             .Options);
 
         // MongoDB client and database
@@ -153,7 +153,7 @@ public class ShopDbContext : DbContext
 
         // Fetch data from SQL Server
         var sqlData = await sqlContext.Products.ToListAsync();
-        
+
         // Transform data into DTOs, since that is what we will be using
         var productDtos = sqlData.Select(p => _mapper.Map<ProductDto>(p)).ToList();
         
@@ -164,7 +164,7 @@ public class ShopDbContext : DbContext
             Guid = p.Guid,
             Name = p.Name,
             Description = p.Description
-            
+
         }).ToList();
         
         await mongoCollection.InsertManyAsync(mongoData);
@@ -176,7 +176,7 @@ public class ShopDbContext : DbContext
     /// </summary>
     public class ProductMongoEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
