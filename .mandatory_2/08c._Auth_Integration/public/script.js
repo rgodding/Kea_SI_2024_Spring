@@ -4,7 +4,6 @@ let auth0Client;
 
 async function login() {
     await auth0Client.loginWithRedirect();
-    console.log('Is logged in: ', await auth0Client.isAuthenticated());
 }
 
 async function logout() {
@@ -12,7 +11,9 @@ async function logout() {
 }
 
 async function checkLoggedIn() {
-    console.log('Is logged in: ', await auth0Client.isAuthenticated());
+    const isLoggedInBox = document.getElementById('loggedIn');
+    const isLogged = await auth0Client.isAuthenticated();
+    isLoggedInBox.innerHTML = isLogged ? 'Yes' : 'No'
 }
 
 
